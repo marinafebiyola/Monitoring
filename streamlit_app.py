@@ -24,7 +24,9 @@ while True:
     # Menampilkan data acak di frontend
     if data is not None:
         st.write(f"Data Acak: {data}")
-
+    
+    # Delay sebelum permintaan berikutnya (misalnya, setiap 5 detik)
+    time.sleep(3)
 
     # Refresh halaman
     st.experimental_rerun()
