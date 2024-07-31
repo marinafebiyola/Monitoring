@@ -5,7 +5,7 @@ st.title("Monitoring System")
 
 def get_random_data():
     try:
-        response = requests.get("http://127.0.0.1:5000/random-data")
+        response = requests.get("https://tender-turkeys-relate.loca.lt")
         if response.status_code == 200:
             return response.json()
         else:
