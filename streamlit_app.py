@@ -14,6 +14,9 @@ def get_random_data():
         st.error(f"Error fetching data: {e}")
         return None
 
+# Tempat untuk menampilkan data acak
+data_placeholder = st.empty()
+
 # Menampilkan data acak secara terus-menerus
 st.write("Menampilkan data acak secara terus-menerus...")
 
@@ -23,10 +26,7 @@ while True:
     
     # Menampilkan data acak di frontend
     if data is not None:
-        st.write(f"Data Acak: {data}")
+        data_placeholder.write(f"Data Acak: {data}")
     
     # Delay sebelum permintaan berikutnya (misalnya, setiap 5 detik)
-    time.sleep(3)
-
-    # Refresh halaman
-    st.experimental_rerun()
+    time.sleep(5)
