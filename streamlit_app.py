@@ -1,32 +1,9 @@
 import streamlit as st
 import requests
-import time
 
-st.title("Monitoring System")
+st.title("Streamlit dengan Backend Flask")
 
-# Fungsi untuk mendapatkan data acak dari backend
-def get_random_data():
-    try:
-        response = requests.get("https://eleven-feet-cheat.loca.lt/random-data")
-        data = response.json()
-        return data['data']
-    except requests.RequestException as e:
-        st.error(f"Error fetching data: {e}")
-        return None
-
-# Tempat untuk menampilkan data acak
-data_placeholder = st.empty()
-
-# Menampilkan data acak secara terus-menerus
-st.write("Menampilkan data acak secara terus-menerus...")
-
-while True:
-    # Mendapatkan data acak
-    data = get_random_data()
-    
-    # Menampilkan data acak di frontend
-    if data is not None:
-        data_placeholder.write(f"Data Acak: {data}")
-    
-    # Delay sebelum permintaan berikutnya (misalnya, setiap 5 detik)
-    time.sleep(5)
+if st.button("Dapatkan Data Acak"):
+    response = requests.get("https://tricky-hats-decide.loca.lt/random-data")
+    data = response.json()
+    st.write(f"Data Acak: {data['data']}")
