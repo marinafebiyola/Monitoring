@@ -7,7 +7,7 @@ st.title("Monitoring System")
 # Fungsi untuk mendapatkan data acak dari backend
 def get_random_data():
     try:
-        response = requests.get("https://light-news-fry.loca.lt/random-data")
+        response = requests.get("https://lovely-results-guess.loca.lt/random-data")
         data = response.json()
         return data['data']
     except requests.RequestException as e:
