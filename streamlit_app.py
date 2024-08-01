@@ -8,7 +8,7 @@ data_placeholder = st.empty()
 
 while True:
     try:
-        response = requests.get("https://tangy-pears-cover.loca.lt/random-data", timeout=5)
+        response = requests.get("https://smooth-rice-greet.loca.lt/random-data", timeout=5)
         response.raise_for_status()
         data = response.json()
         st.write(f"Data Acak: {data['data']}")
