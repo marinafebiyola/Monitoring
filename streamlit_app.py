@@ -1,18 +1,28 @@
 import streamlit as st
-import requests
-import time
+import socketio
 
-st.title("Monitoring")
+# Koneksi ke server backend Flask dengan WebSocket
+sio = socketio.Client()
 
-data_placeholder = st.empty()
+# Callback untuk menerima data dari server
+@sio.event
+def data_response(data):
+    st.text(f"Data Acak: {data['data']}")
 
-while True:
-    try:
-        response = requests.get("https://7837-103-20-185-106.ngrok-free.app/random-data", timeout=5)
-        response.raise_for_status()
-        data = response.json()
-        data_placeholder.text(f"Data Acak: {data['data']}")
-    except Exception as e:
-        st.error(f"Terjadi kesalahan: {e}")
+def main():
+    st.title("Monitoring Data Real-Time")
+
+    # Alamat URL server backend Flask yang dijalankan
+    # Ganti 'http://127.0.0.1:5000' sesuai dengan alamat yang sesuai dengan server Flask Anda
+    server_url = 'http://127.0.0.1:5000'
     
-    time.sleep(3)  # Interval waktu yang lebih stabil untuk pengiriman data
+    with st.spinner(f'Connecting to WebSocket at {server_url}...'):
+        sio.connect(server_url)
+
+    # Minta data dari server saat terhubung
+    sio.emit('request_data')
+
+    st.text("Menunggu data real-time...")
+
+if __name__ == '__main__':
+    main()
