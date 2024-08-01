@@ -12,8 +12,6 @@ while True:
         response.raise_for_status()
         data = response.json()
         data_placeholder.text(f"Data Acak: {data['data']}")
-    except requests.exceptions.RequestException as e:
-        st.error(f"Request gagal: {e}")
     except Exception as e:
         st.error(f"Terjadi kesalahan: {e}")
     
