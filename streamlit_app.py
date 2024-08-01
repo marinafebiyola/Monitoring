@@ -8,7 +8,7 @@ data_placeholder = st.empty()
 
 while True:
     try:
-        response = requests.get("https://gold-gifts-bathe.loca.lt/random-data", timeout=5)
+        response = requests.get("https://7837-103-20-185-106.ngrok-free.app/random-data", timeout=5)
         response.raise_for_status()
         data = response.json()
         data_placeholder.text(f"Data Acak: {data['data']}")
