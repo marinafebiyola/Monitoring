@@ -17,4 +17,4 @@ while True:
     except Exception as e:
         st.error(f"Terjadi kesalahan: {e}")
     
-    time.sleep(3)  # Interval waktu yang lebih stabil untuk pengiriman data
+    time.sleep(1)  # Interval waktu yang lebih stabil untuk pengiriman data
