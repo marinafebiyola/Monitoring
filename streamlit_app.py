@@ -4,15 +4,17 @@ import time
 
 st.title("Monitoring")
 
+data_placeholder = st.empty()
+
 while True:
     try:
         response = requests.get("https://smooth-rice-greet.loca.lt/random-data", timeout=5)
         response.raise_for_status()
         data = response.json()
-        st.text(f"Data Acak: {data['data']}")
+        data_placeholder.text(f"Data Acak: {data['data']}")
     except requests.exceptions.RequestException as e:
         st.error(f"Request gagal: {e}")
     except Exception as e:
         st.error(f"Terjadi kesalahan: {e}")
     
-    time.sleep(1)  # Interval waktu untuk mempercepat pemanggilan data
+    time.sleep(3)  # Interval waktu yang lebih stabil untuk pengiriman data
