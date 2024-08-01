@@ -1,28 +1,13 @@
 import streamlit as st
-import socketio
+import requests
+import time
 
-# Koneksi ke server backend Flask dengan WebSocket
-sio = socketio.Client()
+st.title("Monitoring")
 
-# Callback untuk menerima data dari server
-@sio.event
-def data_response(data):
-    st.text(f"Data Acak: {data['data']}")
+data_placeholder = st.empty()
 
-def main():
-    st.title("Monitoring Data Real-Time")
-
-    # Alamat URL server backend Flask yang dijalankan
-    # Ganti 'http://127.0.0.1:5000' sesuai dengan alamat yang sesuai dengan server Flask Anda
-    server_url = 'http://127.0.0.1:5000'
-    
-    with st.spinner(f'Connecting to WebSocket at {server_url}...'):
-        sio.connect(server_url)
-
-    # Minta data dari server saat terhubung
-    sio.emit('request_data')
-
-    st.text("Menunggu data real-time...")
-
-if __name__ == '__main__':
-    main()
+while True:
+    response = requests.get("https://b111-103-20-185-106.ngrok-free.app/random-data")
+    data = response.json()  # This line is causing the JSONDecodeError
+    data_placeholder.write(f"Data Acak: {data['data']}")
+    time.sleep(5)  # Adjust the sleep time as needed to control the update frequency
