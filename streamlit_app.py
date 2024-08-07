@@ -10,4 +10,4 @@ while True:
     response = requests.get("https://be92-103-20-185-106.ngrok-free.app/random-data")
     data = response.json()  # This line is causing the JSONDecodeError
     data_placeholder.write(f"Data Acak: {data['data']}")
-    time.sleep(3)
+    time.sleep(2)
