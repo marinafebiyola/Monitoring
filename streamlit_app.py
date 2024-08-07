@@ -7,6 +7,6 @@ st.title("Monitoring system")
 data_placeholder = st.empty()
 
 while True:
-    response = requests.get("https://44cb-103-20-185-106.ngrok-free.app/random-data")
+    response = requests.get("https://c207-103-20-185-106.ngrok-free.app/random-data")
     data = response.json()  # This line is causing the JSONDecodeError
     data_placeholder.write(f"Data Acak: {data['data']}")
